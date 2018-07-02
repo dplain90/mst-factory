@@ -4,7 +4,7 @@ _This package provides utility functions for building mobx-state-tree stores usi
 
 # Installation
 
-NPM: `npm install mobx-factory --save`
+NPM: `npm install mst-factory --save`
 
 # Example
 
