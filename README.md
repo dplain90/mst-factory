@@ -332,3 +332,6 @@ factory.create('store.default', [patch('add', '/todos/0', slice('todo.completed'
 
  */  
 ```
+
+## To Do
+-   Tests for factory.create with patches
