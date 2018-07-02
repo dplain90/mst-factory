@@ -1,6 +1,6 @@
 # Mst Factory
 
-_This package provides utility functions for building mobx-state-tree stores using slices of static state. Useful for writing Jest/Enzyme tests._
+_This package provides utility functions for building mobx-state-tree stores using slices of static state. Useful for writing tests._
 
 # Installation
 
@@ -199,8 +199,14 @@ factory.createProps('store.default', 'props.listComponent') // returns object of
 ## path
 ___
 
+
 path function can be used when writing a props slice you want generated with createProps.  
 Once the MST store has been created, it will resolve the path you provide it to that location in the store.  
+
+**Parameters**
+
+-   `Path` String Path to item from root of store ( can be a string or a slice )
+
 
 **Example**
 ```js
@@ -255,5 +261,72 @@ factory.createProps('store.default', 'props.anotherListItem') // returns object 
     isOpen: false,
     item: Store.todos[1], snapshot would be: { title: 'Do the dishes', done: true}
   }
+ */  
+```
+
+## patch
+___
+
+Syntactic sugar for a JSON patch object
+
+**Parameters**
+
+-   `op` add, replace, or remove, Operation patch is completing
+- `path` path to where patch is being applied
+- `value` value of patch change
+
+**Example**
+```js
+import { slice, path, patch, MstFactory } from 'mst-factory'
+const Todo = types.model({
+  title: types.string,
+  done: types.boolean
+})
+
+const slices = {
+  todo: {
+    default: {
+      title: 'Default Todo',
+      done: false
+    },
+    completed: slice('todo.default', {done: true}),
+    dishes: slice('todo.completed', {title: 'Do the dishes'})
+  }
+  store: {
+    default: {
+
+      todos: [slice('todo.default')]
+    }
+  }
+  props: {
+    listItem: {
+      isOpen: true,
+      item: path('/todos/0')
+    },
+    anotherListItem: {
+      isOpen: false,
+      item: path('/todos/1')
+    }
+
+  }
+}
+
+const models = { todo: ToDo }
+const factory = new MstFactory(slices, models)
+
+factory.create('store.default', [patch('add', '/todos/0', slice('todo.completed'))]) // store.todos will be
+ /*
+ [
+   {
+     title: 'DefaultTodo', (patch added it)
+     done: true
+   },
+   {
+     title: 'DefaultTodo',
+     done: false
+   }
+ ]
+ */  
+
  */  
 ```
