@@ -1,6 +1,6 @@
 {
   "name": "mst-factory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Build snapshots for mobx-state-tree (mst) stores based off static object slices",
   "main": "./lib/index.js",
   "scripts": {
