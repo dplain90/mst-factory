@@ -1,0 +1,56 @@
+{
+  "name": "mst-factory",
+  "version": "1.0.0",
+  "description": "Build snapshots for mobx-state-tree (mst) stores based off static object slices",
+  "main": "./lib/index.js",
+  "scripts": {
+    "clean": "rimraf lib",
+    "test": "jest",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "prepublish": "npm run clean  && npm run test && npm run build"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+  "type": "git",
+  "url": "git+https://github.com/dplain90/mst-factory.git"
+  },
+  "keywords": [
+  "mobx",
+  "mobx-state-tree",
+  "mst",
+  ],
+  "bugs": {
+  "url": "https://github.com/dplain90/mst-factory/issues"
+  },
+"homepage": "https://github.com/dplain90/mst-factory#readme",
+  "author": "Dan Plain <dplain@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "auto-bind": "^1.2.1",
+    "lodash.get": "^4.4.2",
+    "lodash.isarray": "^4.0.0",
+    "lodash.isempty": "^4.4.0",
+    "lodash.isobject": "^3.0.2",
+    "lodash.isplainobject": "^4.0.6"
+  },
+  "peerDependencies": {
+    "mobx": "^5.0.3",
+    "mobx-state-tree": "^2.2.0"
+  },
+  "devDependencies": {
+    "mobx": "^5.0.3",
+    "mobx-state-tree": "^2.2.0",
+    "jest": "^23.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-minify": "^0.3.0",
+    "rimraf": "^2.6.2",
+    "cross-env": "^5.1.3"
+  }
+}
