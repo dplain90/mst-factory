@@ -267,7 +267,9 @@ factory.createProps('store.default', 'props.anotherListItem') // returns object 
 ## patch
 ___
 
-Syntactic sugar for a JSON patch object
+Syntactic sugar for a JSON patch object.  
+After the MST store is created, patches will be applied in order to the model  
+Values that use slices will be resolved appropriately.   
 
 **Parameters**
 
