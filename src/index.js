@@ -34,11 +34,12 @@ const isClass = (item, type) => {
   }
   return false
 }
+const sliceFactName = SliceFactory.name
+const pathFactName = PathFactory.name
+const patchFactName = PatchFactory.name
 
-const isSlice = item => isClass(item, 'SliceFactory')
-const isPath = item => isClass(item, 'PathFactory')
-
-
+const isSlice = item => isClass(item, sliceFactName)
+const isPath = item => isClass(item, pathFactName)
 
 class MstFactory {
   constructor(models, slices, nameDepth = 0) {
